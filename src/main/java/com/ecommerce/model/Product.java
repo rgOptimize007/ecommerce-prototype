@@ -1,17 +1,23 @@
 package com.ecommerce.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "products")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String title;
     private double price;
+    @ManyToOne
     private Category category;
     private String description;
     private String imageUrl;
+
 }
