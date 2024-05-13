@@ -12,10 +12,11 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long productId;
     private String title;
     private double price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "categoryId",nullable = false)
     private Category category;
     private String description;
     private String imageUrl;

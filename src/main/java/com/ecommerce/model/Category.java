@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +15,8 @@ import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long categoryId;
     private String name;
+    @OneToMany(mappedBy = "category")
+    private List<Product> productList;
 }
